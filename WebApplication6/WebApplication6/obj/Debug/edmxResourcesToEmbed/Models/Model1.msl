@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbDiscShopModelStoreContainer" CdmEntityContainer="dbDiscShopEntities">
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="dbDiscShopModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="proc_register_user" FunctionName="dbDiscShopModel.Store.proc_register_user" />
+    <FunctionImportMapping FunctionImportName="proc_LoginCheck" FunctionName="dbDiscShopModel.Store.proc_LoginCheck">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbDiscShopModel.proc_LoginCheck_Result">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

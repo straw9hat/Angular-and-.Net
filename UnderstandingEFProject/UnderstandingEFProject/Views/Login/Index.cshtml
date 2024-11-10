@@ -1,0 +1,14 @@
+﻿@model UnderstandingEFProject.Models.LoginDetail
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    @foreach(var item in Model)
+    {
+        <li> @item.userID </li>
+    }
+</div>

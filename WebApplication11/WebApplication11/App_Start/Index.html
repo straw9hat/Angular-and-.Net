@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>
+        List of Products below given price
+    </h1>
+    <input type="text" id="txtPrice" />
+    <button id="btnFetch">Fetch Data</button>
+    <table id="tblProducts" border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>UnitPrice</th>
+        </tr>
+    </table>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btnFetch").click(function () {
+                var url = "api/Products/" + $("txtPrice").val();
+                $.getJSON(url).done(function (data) {
+                    $.each(data, function (key, value) {
+                        $("#tblProducts").append("<tr><td>" + value.ProductID + "</td><td>" +
+                            value.ProductName + "</td><td>" + value.QuantityPerUnit +
+                            "</td><td>" + value.UnitPrice + "</td></tr>");
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

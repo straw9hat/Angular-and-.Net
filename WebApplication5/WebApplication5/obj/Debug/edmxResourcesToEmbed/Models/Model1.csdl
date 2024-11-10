@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbDiscShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="disc">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="movie_id" Type="Int32" />
+    <Property Name="rental_cost" Type="Double" />
+    <NavigationProperty Name="movy" Relationship="Self.fk_mid" FromRole="disc" ToRole="movies" />
+  </EntityType>
+  <EntityType Name="movy">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="duration" Type="Double" />
+    <NavigationProperty Name="discs" Relationship="Self.fk_mid" FromRole="movies" ToRole="disc" />
+    <Property Name="pic" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="fk_mid">
+    <End Role="movies" Type="Self.movy" Multiplicity="0..1" />
+    <End Role="disc" Type="Self.disc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="movies">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="disc">
+        <PropertyRef Name="movie_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbDiscShopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="discs" EntityType="Self.disc" />
+    <EntitySet Name="movies" EntityType="Self.movy" />
+    <AssociationSet Name="fk_mid" Association="Self.fk_mid">
+      <End Role="movies" EntitySet="movies" />
+      <End Role="disc" EntitySet="discs" />
+    </AssociationSet>
+    <FunctionImport Name="proc_insert_disc">
+      <Parameter Name="mid" Mode="In" Type="Int32" />
+      <Parameter Name="cost" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="proc_insert_movie">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="dur" Mode="In" Type="Double" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

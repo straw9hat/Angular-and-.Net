@@ -1,0 +1,6 @@
+C:\Users\Nikki\source\repos\BootCamp\BootCamp\obj\Debug\BootCamp.csprojAssemblyReference.cache
+C:\Users\Nikki\source\repos\BootCamp\BootCamp\bin\Debug\BootCamp.exe.config
+C:\Users\Nikki\source\repos\BootCamp\BootCamp\bin\Debug\BootCamp.exe
+C:\Users\Nikki\source\repos\BootCamp\BootCamp\bin\Debug\BootCamp.pdb
+C:\Users\Nikki\source\repos\BootCamp\BootCamp\obj\Debug\BootCamp.exe
+C:\Users\Nikki\source\repos\BootCamp\BootCamp\obj\Debug\BootCamp.pdb

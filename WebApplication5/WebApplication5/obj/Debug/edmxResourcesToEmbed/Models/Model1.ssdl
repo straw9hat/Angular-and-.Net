@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbDiscShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="disc">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="movie_id" Type="int" />
+    <Property Name="rental_cost" Type="float" />
+  </EntityType>
+  <EntityType Name="movies">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="duration" Type="float" />
+    <Property Name="pic" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <Association Name="fk_mid">
+    <End Role="movies" Type="Self.movies" Multiplicity="0..1" />
+    <End Role="disc" Type="Self.disc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="movies">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="disc">
+        <PropertyRef Name="movie_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="proc_insert_disc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mid" Type="int" Mode="In" />
+    <Parameter Name="cost" Type="float" Mode="In" />
+  </Function>
+  <Function Name="proc_insert_movie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="dur" Type="float" Mode="In" />
+  </Function>
+  <EntityContainer Name="dbDiscShopModelStoreContainer">
+    <EntitySet Name="disc" EntityType="Self.disc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="movies" EntityType="Self.movies" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_mid" Association="Self.fk_mid">
+      <End Role="movies" EntitySet="movies" />
+      <End Role="disc" EntitySet="disc" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

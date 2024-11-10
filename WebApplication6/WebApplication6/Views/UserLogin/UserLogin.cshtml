@@ -1,0 +1,27 @@
+﻿@model WebApplication6.Models.user
+
+@{
+    ViewBag.Title = "UserLogin";
+}
+
+<h2>UserLogin</h2>
+
+@using (Html.BeginForm())
+{
+<div>
+    @Html.DisplayNameFor(m => m.username)
+    @Html.TextBoxFor(m => m.username, new { @class = "form-contrl", @placeholder = "Enter username" })
+    @Html.ValidationMessageFor(m => m.username, null, new { @class = "text-danger" })
+    <br />
+    @Html.DisplayNameFor(m => m.password)
+    @Html.TextBoxFor(m => m.password, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.password, null, new { @class = "text-danger" })
+    <br />
+    <input type="submit" value="Login" class="btn btn-success" />
+    <input type="reset" value="Reset" class="btn btn-danger" />
+</div>
+}
+
+<div>
+    @ViewBag.Error
+</div>

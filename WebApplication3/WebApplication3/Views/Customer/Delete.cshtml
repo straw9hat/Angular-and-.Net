@@ -1,0 +1,32 @@
+﻿@model WebApplication3.Models.Customer
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h2>Are you sure you want to delete this Customer?</h2>
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>Customer Id</td>
+            <td>@Html.DisplayFor(m => m.Id)</td>
+        </tr>
+        <tr>
+            <td>Customer Name</td>
+            <td>@Html.DisplayFor(m => m.Name)</td>
+        </tr>
+        <tr>
+            <td>Customer Age</td>
+            <td>@Html.DisplayFor(m => m.Age)</td>
+        </tr>
+        <tr>
+            <td>Customer PhoneNo</td>
+            <td>@Html.DisplayFor(m=>m.PhoneNo)</td>
+        </tr>
+    </table>
+    <input type="submit" value="Yes" />
+}
+

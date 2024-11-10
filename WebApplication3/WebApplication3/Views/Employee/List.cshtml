@@ -1,0 +1,24 @@
+﻿@model IEnumerable<WebApplication3.Models.Employee>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+@foreach(var item in Model)
+{
+    <p>
+        <div>
+            Employee Id : @item.Id
+            <br />
+            Employee Name : @item.Name
+            <br />
+            Employee Age : @item.Age
+            <br />
+            @Html.ActionLink("Edit", "Update", new { id = item.Id })
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </div>
+    </p>
+    <hr />
+}
+

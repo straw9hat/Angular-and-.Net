@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PrjGladModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Applicant_details">
+    <Key>
+      <PropertyRef Name="Applicant_Id" />
+    </Key>
+    <Property Name="Applicant_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int64" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Pin" Type="Int64" />
+    <Property Name="Car_Id" Type="Int64" />
+    <NavigationProperty Name="Vehicle_details" Relationship="Self.FK__Applicant__Car_I__3D5E1FD2" FromRole="Applicant_details" ToRole="Vehicle_details" />
+    <NavigationProperty Name="UserLogin_details" Relationship="Self.FK__Applicant__email__3C69FB99" FromRole="Applicant_details" ToRole="UserLogin_details" />
+    <NavigationProperty Name="Application_Status" Relationship="Self.FK__Applicati__Appli__403A8C7D" FromRole="Applicant_details" ToRole="Application_Status" />
+    <NavigationProperty Name="Loan_details" Relationship="Self.FK__Loan_deta__Appli__4BAC3F29" FromRole="Applicant_details" ToRole="Loan_details" />
+  </EntityType>
+  <EntityType Name="Application_Status">
+    <Key>
+      <PropertyRef Name="Approve_Id" />
+    </Key>
+    <Property Name="Approve_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Applicant_Id" Type="Int64" />
+    <Property Name="Approving_Admin_id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Application_Status1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Applicant_details" Relationship="Self.FK__Applicati__Appli__403A8C7D" FromRole="Application_Status" ToRole="Applicant_details" />
+  </EntityType>
+  <EntityType Name="Employment_details">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="type_of_emp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="annual_sal" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="existing_emi" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="UserLogin_details" Relationship="Self.FK__Employmen__email__46E78A0C" FromRole="Employment_details" ToRole="UserLogin_details" />
+  </EntityType>
+  <EntityType Name="identity_details">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Aadhaar" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pan" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Profile_pic" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Six_months_sal_slip" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UserLogin_details" Relationship="Self.FK__identity___email__440B1D61" FromRole="identity_details" ToRole="UserLogin_details" />
+  </EntityType>
+  <EntityType Name="Loan_details">
+    <Key>
+      <PropertyRef Name="Applicant_Id" />
+    </Key>
+    <Property Name="Applicant_Id" Type="Int64" Nullable="false" />
+    <Property Name="Car_Id" Type="Int64" />
+    <Property Name="Loan_Id" Type="Int64" />
+    <Property Name="amount_taken" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Applicant_details" Relationship="Self.FK__Loan_deta__Appli__4BAC3F29" FromRole="Loan_details" ToRole="Applicant_details" />
+    <NavigationProperty Name="Vehicle_details" Relationship="Self.FK__Loan_deta__Car_I__4CA06362" FromRole="Loan_details" ToRole="Vehicle_details" />
+    <NavigationProperty Name="Loan_schemes" Relationship="Self.FK__Loan_deta__Loan___4D94879B" FromRole="Loan_details" ToRole="Loan_schemes" />
+  </EntityType>
+  <EntityType Name="Loan_schemes">
+    <Key>
+      <PropertyRef Name="Loan_Id" />
+    </Key>
+    <Property Name="Loan_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Loan_Amt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="interest" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Loan_tenure" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Loan_details" Relationship="Self.FK__Loan_deta__Loan___4D94879B" FromRole="Loan_schemes" ToRole="Loan_details" />
+  </EntityType>
+  <EntityType Name="UserLogin_details">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isAdmin" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Admin_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Applicant_details" Relationship="Self.FK__Applicant__email__3C69FB99" FromRole="UserLogin_details" ToRole="Applicant_details" />
+    <NavigationProperty Name="Employment_details" Relationship="Self.FK__Employmen__email__46E78A0C" FromRole="UserLogin_details" ToRole="Employment_details" />
+    <NavigationProperty Name="identity_details" Relationship="Self.FK__identity___email__440B1D61" FromRole="UserLogin_details" ToRole="identity_details" />
+  </EntityType>
+  <EntityType Name="Vehicle_details">
+    <Key>
+      <PropertyRef Name="Car_ID" />
+    </Key>
+    <Property Name="Car_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Car_make" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Car_model" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Ex_showroom_price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="On_road_price" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Applicant_details" Relationship="Self.FK__Applicant__Car_I__3D5E1FD2" FromRole="Vehicle_details" ToRole="Applicant_details" />
+    <NavigationProperty Name="Loan_details" Relationship="Self.FK__Loan_deta__Car_I__4CA06362" FromRole="Vehicle_details" ToRole="Loan_details" />
+  </EntityType>
+  <Association Name="FK__Applicant__Car_I__3D5E1FD2">
+    <End Role="Vehicle_details" Type="Self.Vehicle_details" Multiplicity="0..1" />
+    <End Role="Applicant_details" Type="Self.Applicant_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_details">
+        <PropertyRef Name="Car_ID" />
+      </Principal>
+      <Dependent Role="Applicant_details">
+        <PropertyRef Name="Car_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Applicant__email__3C69FB99">
+    <End Role="UserLogin_details" Type="Self.UserLogin_details" Multiplicity="0..1" />
+    <End Role="Applicant_details" Type="Self.Applicant_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin_details">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="Applicant_details">
+        <PropertyRef Name="email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Applicati__Appli__403A8C7D">
+    <End Role="Applicant_details" Type="Self.Applicant_details" Multiplicity="0..1" />
+    <End Role="Application_Status" Type="Self.Application_Status" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Applicant_details">
+        <PropertyRef Name="Applicant_Id" />
+      </Principal>
+      <Dependent Role="Application_Status">
+        <PropertyRef Name="Applicant_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Loan_deta__Appli__4BAC3F29">
+    <End Role="Applicant_details" Type="Self.Applicant_details" Multiplicity="1" />
+    <End Role="Loan_details" Type="Self.Loan_details" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Applicant_details">
+        <PropertyRef Name="Applicant_Id" />
+      </Principal>
+      <Dependent Role="Loan_details">
+        <PropertyRef Name="Applicant_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employmen__email__46E78A0C">
+    <End Role="UserLogin_details" Type="Self.UserLogin_details" Multiplicity="1" />
+    <End Role="Employment_details" Type="Self.Employment_details" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin_details">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="Employment_details">
+        <PropertyRef Name="email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__identity___email__440B1D61">
+    <End Role="UserLogin_details" Type="Self.UserLogin_details" Multiplicity="1" />
+    <End Role="identity_details" Type="Self.identity_details" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin_details">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="identity_details">
+        <PropertyRef Name="email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Loan_deta__Car_I__4CA06362">
+    <End Role="Vehicle_details" Type="Self.Vehicle_details" Multiplicity="0..1" />
+    <End Role="Loan_details" Type="Self.Loan_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_details">
+        <PropertyRef Name="Car_ID" />
+      </Principal>
+      <Dependent Role="Loan_details">
+        <PropertyRef Name="Car_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Loan_deta__Loan___4D94879B">
+    <End Role="Loan_schemes" Type="Self.Loan_schemes" Multiplicity="0..1" />
+    <End Role="Loan_details" Type="Self.Loan_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Loan_schemes">
+        <PropertyRef Name="Loan_Id" />
+      </Principal>
+      <Dependent Role="Loan_details">
+        <PropertyRef Name="Loan_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PrjGladEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Applicant_details" EntityType="Self.Applicant_details" />
+    <EntitySet Name="Application_Status" EntityType="Self.Application_Status" />
+    <EntitySet Name="Employment_details" EntityType="Self.Employment_details" />
+    <EntitySet Name="identity_details" EntityType="Self.identity_details" />
+    <EntitySet Name="Loan_details" EntityType="Self.Loan_details" />
+    <EntitySet Name="Loan_schemes" EntityType="Self.Loan_schemes" />
+    <EntitySet Name="UserLogin_details" EntityType="Self.UserLogin_details" />
+    <EntitySet Name="Vehicle_details" EntityType="Self.Vehicle_details" />
+    <AssociationSet Name="FK__Applicant__Car_I__3D5E1FD2" Association="Self.FK__Applicant__Car_I__3D5E1FD2">
+      <End Role="Vehicle_details" EntitySet="Vehicle_details" />
+      <End Role="Applicant_details" EntitySet="Applicant_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Applicant__email__3C69FB99" Association="Self.FK__Applicant__email__3C69FB99">
+      <End Role="UserLogin_details" EntitySet="UserLogin_details" />
+      <End Role="Applicant_details" EntitySet="Applicant_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Applicati__Appli__403A8C7D" Association="Self.FK__Applicati__Appli__403A8C7D">
+      <End Role="Applicant_details" EntitySet="Applicant_details" />
+      <End Role="Application_Status" EntitySet="Application_Status" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Loan_deta__Appli__4BAC3F29" Association="Self.FK__Loan_deta__Appli__4BAC3F29">
+      <End Role="Applicant_details" EntitySet="Applicant_details" />
+      <End Role="Loan_details" EntitySet="Loan_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employmen__email__46E78A0C" Association="Self.FK__Employmen__email__46E78A0C">
+      <End Role="UserLogin_details" EntitySet="UserLogin_details" />
+      <End Role="Employment_details" EntitySet="Employment_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__identity___email__440B1D61" Association="Self.FK__identity___email__440B1D61">
+      <End Role="UserLogin_details" EntitySet="UserLogin_details" />
+      <End Role="identity_details" EntitySet="identity_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Loan_deta__Car_I__4CA06362" Association="Self.FK__Loan_deta__Car_I__4CA06362">
+      <End Role="Vehicle_details" EntitySet="Vehicle_details" />
+      <End Role="Loan_details" EntitySet="Loan_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Loan_deta__Loan___4D94879B" Association="Self.FK__Loan_deta__Loan___4D94879B">
+      <End Role="Loan_schemes" EntitySet="Loan_schemes" />
+      <End Role="Loan_details" EntitySet="Loan_details" />
+    </AssociationSet>
+    <FunctionImport Name="sp_insert_applicant_details">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Age" Mode="In" Type="Int64" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="Mobile" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="State" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="Pin" Mode="In" Type="Int64" />
+      <Parameter Name="Car_Id" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_employment_details">
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Type_of_emp" Mode="In" Type="String" />
+      <Parameter Name="Annual_sal" Mode="In" Type="Decimal" />
+      <Parameter Name="Existing_emi" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_identity_details">
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Aadhaar" Mode="In" Type="String" />
+      <Parameter Name="Pan" Mode="In" Type="String" />
+      <Parameter Name="Profile_pic" Mode="In" Type="String" />
+      <Parameter Name="Six_months_sal_slip" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_show_applicant_details" ReturnType="Collection(PrjGladModel.sp_show_applicant_details_Result)">
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_show_employment_details" ReturnType="Collection(PrjGladModel.sp_show_employment_details_Result)">
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_user_login_details" ReturnType="Collection(Boolean)">
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_show_applicant_details_Result">
+    <Property Type="Int64" Name="Applicant_Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="30" />
+    <Property Type="Int64" Name="Age" Nullable="true" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Mobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="state" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="20" />
+    <Property Type="Int64" Name="Pin" Nullable="true" />
+    <Property Type="Int64" Name="Car_Id" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_show_employment_details_Result">
+    <Property Type="String" Name="email" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="type_of_emp" Nullable="true" MaxLength="30" />
+    <Property Type="Decimal" Name="annual_sal" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="existing_emi" Nullable="true" Precision="19" />
+  </ComplexType>
+</Schema>

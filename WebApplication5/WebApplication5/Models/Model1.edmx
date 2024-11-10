@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbDiscShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="disc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="movie_id" Type="int" />
+          <Property Name="rental_cost" Type="float" />
+        </EntityType>
+        <EntityType Name="movies">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="duration" Type="float" />
+          <Property Name="pic" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <Association Name="fk_mid">
+          <End Role="movies" Type="Self.movies" Multiplicity="0..1" />
+          <End Role="disc" Type="Self.disc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movies">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="disc">
+              <PropertyRef Name="movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="proc_insert_disc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mid" Type="int" Mode="In" />
+          <Parameter Name="cost" Type="float" Mode="In" />
+        </Function>
+        <Function Name="proc_insert_movie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="dur" Type="float" Mode="In" />
+        </Function>
+        <EntityContainer Name="dbDiscShopModelStoreContainer">
+          <EntitySet Name="disc" EntityType="Self.disc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="movies" EntityType="Self.movies" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_mid" Association="Self.fk_mid">
+            <End Role="movies" EntitySet="movies" />
+            <End Role="disc" EntitySet="disc" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbDiscShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="disc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="movie_id" Type="Int32" />
+          <Property Name="rental_cost" Type="Double" />
+          <NavigationProperty Name="movy" Relationship="Self.fk_mid" FromRole="disc" ToRole="movies" />
+        </EntityType>
+        <EntityType Name="movy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="duration" Type="Double" />
+          <NavigationProperty Name="discs" Relationship="Self.fk_mid" FromRole="movies" ToRole="disc" />
+          <Property Name="pic" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="fk_mid">
+          <End Role="movies" Type="Self.movy" Multiplicity="0..1" />
+          <End Role="disc" Type="Self.disc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movies">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="disc">
+              <PropertyRef Name="movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbDiscShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="discs" EntityType="Self.disc" />
+          <EntitySet Name="movies" EntityType="Self.movy" />
+          <AssociationSet Name="fk_mid" Association="Self.fk_mid">
+            <End Role="movies" EntitySet="movies" />
+            <End Role="disc" EntitySet="discs" />
+          </AssociationSet>
+          <FunctionImport Name="proc_insert_disc">
+            <Parameter Name="mid" Mode="In" Type="Int32" />
+            <Parameter Name="cost" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="proc_insert_movie">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="dur" Mode="In" Type="Double" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbDiscShopModelStoreContainer" CdmEntityContainer="dbDiscShopEntities">
+          <EntitySetMapping Name="discs">
+            <EntityTypeMapping TypeName="dbDiscShopModel.disc">
+              <MappingFragment StoreEntitySet="disc">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="movie_id" ColumnName="movie_id" />
+                <ScalarProperty Name="rental_cost" ColumnName="rental_cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="movies">
+            <EntityTypeMapping TypeName="dbDiscShopModel.movy">
+              <MappingFragment StoreEntitySet="movies">
+                <ScalarProperty Name="pic" ColumnName="pic" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="proc_insert_disc" FunctionName="dbDiscShopModel.Store.proc_insert_disc" />
+          <FunctionImportMapping FunctionImportName="proc_insert_movie" FunctionName="dbDiscShopModel.Store.proc_insert_movie" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

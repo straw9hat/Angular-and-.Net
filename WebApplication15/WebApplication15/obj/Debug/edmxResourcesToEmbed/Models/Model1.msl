@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PrjGladModelStoreContainer" CdmEntityContainer="PrjGladEntities">
+    <EntitySetMapping Name="Applicant_details">
+      <EntityTypeMapping TypeName="PrjGladModel.Applicant_details">
+        <MappingFragment StoreEntitySet="Applicant_details">
+          <ScalarProperty Name="Applicant_Id" ColumnName="Applicant_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Pin" ColumnName="Pin" />
+          <ScalarProperty Name="Car_Id" ColumnName="Car_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Application_Status">
+      <EntityTypeMapping TypeName="PrjGladModel.Application_Status">
+        <MappingFragment StoreEntitySet="Application_Status">
+          <ScalarProperty Name="Approve_Id" ColumnName="Approve_Id" />
+          <ScalarProperty Name="Applicant_Id" ColumnName="Applicant_Id" />
+          <ScalarProperty Name="Approving_Admin_id" ColumnName="Approving_Admin_id" />
+          <ScalarProperty Name="Application_Status1" ColumnName="Application_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employment_details">
+      <EntityTypeMapping TypeName="PrjGladModel.Employment_details">
+        <MappingFragment StoreEntitySet="Employment_details">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="type_of_emp" ColumnName="type_of_emp" />
+          <ScalarProperty Name="annual_sal" ColumnName="annual_sal" />
+          <ScalarProperty Name="existing_emi" ColumnName="existing_emi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="identity_details">
+      <EntityTypeMapping TypeName="PrjGladModel.identity_details">
+        <MappingFragment StoreEntitySet="identity_details">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Aadhaar" ColumnName="Aadhaar" />
+          <ScalarProperty Name="Pan" ColumnName="Pan" />
+          <ScalarProperty Name="Profile_pic" ColumnName="Profile_pic" />
+          <ScalarProperty Name="Six_months_sal_slip" ColumnName="Six_months_sal_slip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loan_details">
+      <EntityTypeMapping TypeName="PrjGladModel.Loan_details">
+        <MappingFragment StoreEntitySet="Loan_details">
+          <ScalarProperty Name="Applicant_Id" ColumnName="Applicant_Id" />
+          <ScalarProperty Name="Car_Id" ColumnName="Car_Id" />
+          <ScalarProperty Name="Loan_Id" ColumnName="Loan_Id" />
+          <ScalarProperty Name="amount_taken" ColumnName="amount_taken" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loan_schemes">
+      <EntityTypeMapping TypeName="PrjGladModel.Loan_schemes">
+        <MappingFragment StoreEntitySet="Loan_schemes">
+          <ScalarProperty Name="Loan_Id" ColumnName="Loan_Id" />
+          <ScalarProperty Name="Loan_Amt" ColumnName="Loan_Amt" />
+          <ScalarProperty Name="interest" ColumnName="interest" />
+          <ScalarProperty Name="Loan_tenure" ColumnName="Loan_tenure" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLogin_details">
+      <EntityTypeMapping TypeName="PrjGladModel.UserLogin_details">
+        <MappingFragment StoreEntitySet="UserLogin_details">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+          <ScalarProperty Name="Admin_ID" ColumnName="Admin_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicle_details">
+      <EntityTypeMapping TypeName="PrjGladModel.Vehicle_details">
+        <MappingFragment StoreEntitySet="Vehicle_details">
+          <ScalarProperty Name="Car_ID" ColumnName="Car_ID" />
+          <ScalarProperty Name="Car_make" ColumnName="Car_make" />
+          <ScalarProperty Name="Car_model" ColumnName="Car_model" />
+          <ScalarProperty Name="Ex_showroom_price" ColumnName="Ex_showroom_price" />
+          <ScalarProperty Name="On_road_price" ColumnName="On_road_price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_insert_applicant_details" FunctionName="PrjGladModel.Store.sp_insert_applicant_details" />
+    <FunctionImportMapping FunctionImportName="sp_insert_employment_details" FunctionName="PrjGladModel.Store.sp_insert_employment_details" />
+    <FunctionImportMapping FunctionImportName="sp_insert_identity_details" FunctionName="PrjGladModel.Store.sp_insert_identity_details" />
+    <FunctionImportMapping FunctionImportName="sp_show_applicant_details" FunctionName="PrjGladModel.Store.sp_show_applicant_details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrjGladModel.sp_show_applicant_details_Result">
+          <ScalarProperty Name="Applicant_Id" ColumnName="Applicant_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Pin" ColumnName="Pin" />
+          <ScalarProperty Name="Car_Id" ColumnName="Car_Id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_show_employment_details" FunctionName="PrjGladModel.Store.sp_show_employment_details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrjGladModel.sp_show_employment_details_Result">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="type_of_emp" ColumnName="type_of_emp" />
+          <ScalarProperty Name="annual_sal" ColumnName="annual_sal" />
+          <ScalarProperty Name="existing_emi" ColumnName="existing_emi" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_user_login_details" FunctionName="PrjGladModel.Store.sp_user_login_details" />
+  </EntityContainerMapping>
+</Mapping>

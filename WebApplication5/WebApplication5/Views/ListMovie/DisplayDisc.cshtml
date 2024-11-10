@@ -1,0 +1,15 @@
+﻿@model WebApplication5.Models.DiscMovieCollection
+
+@{
+    ViewBag.Title = "DisplayDisc";
+}
+
+<h2>DisplayDisc</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        Movies: @Html.DropDownListFor(model => model.movies, new SelectList(Model.movies,"id","Name"),"Select Movie")
+    </div>
+    <input type="submit" value="Check" class="btn btn-danger" />
+}

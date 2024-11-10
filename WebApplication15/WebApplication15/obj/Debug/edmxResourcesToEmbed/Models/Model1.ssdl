@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PrjGladModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Applicant_details">
+    <Key>
+      <PropertyRef Name="Applicant_Id" />
+    </Key>
+    <Property Name="Applicant_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+    <Property Name="Age" Type="bigint" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+    <Property Name="Mobile" Type="varchar" MaxLength="20" />
+    <Property Name="email" Type="varchar" MaxLength="20" />
+    <Property Name="address" Type="varchar" MaxLength="100" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+    <Property Name="City" Type="varchar" MaxLength="20" />
+    <Property Name="Pin" Type="bigint" />
+    <Property Name="Car_Id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Application_Status">
+    <Key>
+      <PropertyRef Name="Approve_Id" />
+    </Key>
+    <Property Name="Approve_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Applicant_Id" Type="bigint" />
+    <Property Name="Approving_Admin_id" Type="varchar" MaxLength="20" />
+    <Property Name="Application_Status" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Employment_details">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="type_of_emp" Type="varchar" MaxLength="30" />
+    <Property Name="annual_sal" Type="money" />
+    <Property Name="existing_emi" Type="money" />
+  </EntityType>
+  <EntityType Name="identity_details">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Aadhaar" Type="varchar" MaxLength="30" />
+    <Property Name="Pan" Type="varchar" MaxLength="30" />
+    <Property Name="Profile_pic" Type="varchar" MaxLength="30" />
+    <Property Name="Six_months_sal_slip" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Loan_details">
+    <Key>
+      <PropertyRef Name="Applicant_Id" />
+    </Key>
+    <Property Name="Applicant_Id" Type="bigint" Nullable="false" />
+    <Property Name="Car_Id" Type="bigint" />
+    <Property Name="Loan_Id" Type="bigint" />
+    <Property Name="amount_taken" Type="money" />
+  </EntityType>
+  <EntityType Name="Loan_schemes">
+    <Key>
+      <PropertyRef Name="Loan_Id" />
+    </Key>
+    <Property Name="Loan_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Loan_Amt" Type="money" />
+    <Property Name="interest" Type="money" />
+    <Property Name="Loan_tenure" Type="money" />
+  </EntityType>
+  <EntityType Name="UserLogin_details">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="isAdmin" Type="varchar" MaxLength="5" />
+    <Property Name="Admin_ID" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Vehicle_details">
+    <Key>
+      <PropertyRef Name="Car_ID" />
+    </Key>
+    <Property Name="Car_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Car_make" Type="varchar" MaxLength="30" />
+    <Property Name="Car_model" Type="varchar" MaxLength="30" />
+    <Property Name="Ex_showroom_price" Type="money" />
+    <Property Name="On_road_price" Type="money" />
+  </EntityType>
+  <Association Name="FK__Applicant__Car_I__3D5E1FD2">
+    <End Role="Vehicle_details" Type="Self.Vehicle_details" Multiplicity="0..1" />
+    <End Role="Applicant_details" Type="Self.Applicant_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_details">
+        <PropertyRef Name="Car_ID" />
+      </Principal>
+      <Dependent Role="Applicant_details">
+        <PropertyRef Name="Car_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Applicant__email__3C69FB99">
+    <End Role="UserLogin_details" Type="Self.UserLogin_details" Multiplicity="0..1" />
+    <End Role="Applicant_details" Type="Self.Applicant_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin_details">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="Applicant_details">
+        <PropertyRef Name="email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Applicati__Appli__403A8C7D">
+    <End Role="Applicant_details" Type="Self.Applicant_details" Multiplicity="0..1" />
+    <End Role="Application_Status" Type="Self.Application_Status" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Applicant_details">
+        <PropertyRef Name="Applicant_Id" />
+      </Principal>
+      <Dependent Role="Application_Status">
+        <PropertyRef Name="Applicant_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__Applicati__Appro__412EB0B6' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Applicati__Appro__412EB0B6" />-->
+  <Association Name="FK__Employmen__email__46E78A0C">
+    <End Role="UserLogin_details" Type="Self.UserLogin_details" Multiplicity="1" />
+    <End Role="Employment_details" Type="Self.Employment_details" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin_details">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="Employment_details">
+        <PropertyRef Name="email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__identity___email__440B1D61">
+    <End Role="UserLogin_details" Type="Self.UserLogin_details" Multiplicity="1" />
+    <End Role="identity_details" Type="Self.identity_details" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin_details">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="identity_details">
+        <PropertyRef Name="email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Loan_deta__Appli__4BAC3F29">
+    <End Role="Applicant_details" Type="Self.Applicant_details" Multiplicity="1" />
+    <End Role="Loan_details" Type="Self.Loan_details" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Applicant_details">
+        <PropertyRef Name="Applicant_Id" />
+      </Principal>
+      <Dependent Role="Loan_details">
+        <PropertyRef Name="Applicant_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Loan_deta__Car_I__4CA06362">
+    <End Role="Vehicle_details" Type="Self.Vehicle_details" Multiplicity="0..1" />
+    <End Role="Loan_details" Type="Self.Loan_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_details">
+        <PropertyRef Name="Car_ID" />
+      </Principal>
+      <Dependent Role="Loan_details">
+        <PropertyRef Name="Car_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Loan_deta__Loan___4D94879B">
+    <End Role="Loan_schemes" Type="Self.Loan_schemes" Multiplicity="0..1" />
+    <End Role="Loan_details" Type="Self.Loan_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Loan_schemes">
+        <PropertyRef Name="Loan_Id" />
+      </Principal>
+      <Dependent Role="Loan_details">
+        <PropertyRef Name="Loan_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_insert_applicant_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="Age" Type="bigint" Mode="In" />
+    <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+    <Parameter Name="Mobile" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Address" Type="varchar" Mode="In" />
+    <Parameter Name="State" Type="varchar" Mode="In" />
+    <Parameter Name="City" Type="varchar" Mode="In" />
+    <Parameter Name="Pin" Type="bigint" Mode="In" />
+    <Parameter Name="Car_Id" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_employment_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Type_of_emp" Type="varchar" Mode="In" />
+    <Parameter Name="Annual_sal" Type="money" Mode="In" />
+    <Parameter Name="Existing_emi" Type="money" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_identity_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Aadhaar" Type="varchar" Mode="In" />
+    <Parameter Name="Pan" Type="varchar" Mode="In" />
+    <Parameter Name="Profile_pic" Type="varchar" Mode="In" />
+    <Parameter Name="Six_months_sal_slip" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_show_applicant_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_show_employment_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_user_login_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="PrjGladModelStoreContainer">
+    <EntitySet Name="Applicant_details" EntityType="Self.Applicant_details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Application_Status" EntityType="Self.Application_Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employment_details" EntityType="Self.Employment_details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="identity_details" EntityType="Self.identity_details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Loan_details" EntityType="Self.Loan_details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Loan_schemes" EntityType="Self.Loan_schemes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLogin_details" EntityType="Self.UserLogin_details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle_details" EntityType="Self.Vehicle_details" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Applicant__Car_I__3D5E1FD2" Association="Self.FK__Applicant__Car_I__3D5E1FD2">
+      <End Role="Vehicle_details" EntitySet="Vehicle_details" />
+      <End Role="Applicant_details" EntitySet="Applicant_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Applicant__email__3C69FB99" Association="Self.FK__Applicant__email__3C69FB99">
+      <End Role="UserLogin_details" EntitySet="UserLogin_details" />
+      <End Role="Applicant_details" EntitySet="Applicant_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Applicati__Appli__403A8C7D" Association="Self.FK__Applicati__Appli__403A8C7D">
+      <End Role="Applicant_details" EntitySet="Applicant_details" />
+      <End Role="Application_Status" EntitySet="Application_Status" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employmen__email__46E78A0C" Association="Self.FK__Employmen__email__46E78A0C">
+      <End Role="UserLogin_details" EntitySet="UserLogin_details" />
+      <End Role="Employment_details" EntitySet="Employment_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__identity___email__440B1D61" Association="Self.FK__identity___email__440B1D61">
+      <End Role="UserLogin_details" EntitySet="UserLogin_details" />
+      <End Role="identity_details" EntitySet="identity_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Loan_deta__Appli__4BAC3F29" Association="Self.FK__Loan_deta__Appli__4BAC3F29">
+      <End Role="Applicant_details" EntitySet="Applicant_details" />
+      <End Role="Loan_details" EntitySet="Loan_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Loan_deta__Car_I__4CA06362" Association="Self.FK__Loan_deta__Car_I__4CA06362">
+      <End Role="Vehicle_details" EntitySet="Vehicle_details" />
+      <End Role="Loan_details" EntitySet="Loan_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Loan_deta__Loan___4D94879B" Association="Self.FK__Loan_deta__Loan___4D94879B">
+      <End Role="Loan_schemes" EntitySet="Loan_schemes" />
+      <End Role="Loan_details" EntitySet="Loan_details" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

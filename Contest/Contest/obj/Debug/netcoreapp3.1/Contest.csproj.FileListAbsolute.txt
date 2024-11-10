@@ -1,0 +1,11 @@
+C:\Users\Nikki\source\repos\Contest\Contest\bin\Debug\netcoreapp3.1\Contest.exe
+C:\Users\Nikki\source\repos\Contest\Contest\bin\Debug\netcoreapp3.1\Contest.deps.json
+C:\Users\Nikki\source\repos\Contest\Contest\bin\Debug\netcoreapp3.1\Contest.runtimeconfig.json
+C:\Users\Nikki\source\repos\Contest\Contest\bin\Debug\netcoreapp3.1\Contest.runtimeconfig.dev.json
+C:\Users\Nikki\source\repos\Contest\Contest\bin\Debug\netcoreapp3.1\Contest.dll
+C:\Users\Nikki\source\repos\Contest\Contest\bin\Debug\netcoreapp3.1\Contest.pdb
+C:\Users\Nikki\source\repos\Contest\Contest\obj\Debug\netcoreapp3.1\Contest.csprojAssemblyReference.cache
+C:\Users\Nikki\source\repos\Contest\Contest\obj\Debug\netcoreapp3.1\Contest.AssemblyInfoInputs.cache
+C:\Users\Nikki\source\repos\Contest\Contest\obj\Debug\netcoreapp3.1\Contest.AssemblyInfo.cs
+C:\Users\Nikki\source\repos\Contest\Contest\obj\Debug\netcoreapp3.1\Contest.dll
+C:\Users\Nikki\source\repos\Contest\Contest\obj\Debug\netcoreapp3.1\Contest.pdb

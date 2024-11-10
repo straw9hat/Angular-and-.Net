@@ -1,0 +1,25 @@
+﻿@model IEnumerable<WebApplication3.Models.Customer>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+@foreach (var item in Model)
+{
+    <p>
+        <div>
+            Customer Id : @item.Id
+            <br />
+            Customer Name : @item.Name
+            <br />
+            Customer Age : @item.Age
+            <br />
+            Customer PhoneNo : @item.PhoneNo
+            <br/>
+            @Html.ActionLink("Edit", "Update", new { id = item.Id })
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </div>
+    </p>
+    <hr />
+}

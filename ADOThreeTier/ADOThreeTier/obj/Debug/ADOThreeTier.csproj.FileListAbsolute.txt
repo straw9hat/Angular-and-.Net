@@ -1,0 +1,17 @@
+C:\Users\Nikki\source\repos\ADOThreeTier\ADOThreeTier\bin\Debug\ADOThreeTier.exe.config
+C:\Users\Nikki\source\repos\ADOThreeTier\ADOThreeTier\bin\Debug\ADOThreeTier.exe
+C:\Users\Nikki\source\repos\ADOThreeTier\ADOThreeTier\bin\Debug\ADOThreeTier.pdb
+C:\Users\Nikki\source\repos\ADOThreeTier\ADOThreeTier\bin\Debug\System.Data.SqlClient.dll
+C:\Users\Nikki\source\repos\ADOThreeTier\ADOThreeTier\bin\Debug\System.Data.SqlClient.xml
+C:\Users\Nikki\source\repos\ADOThreeTier\ADOThreeTier\obj\Debug\ADOThreeTier.csprojAssemblyReference.cache
+C:\Users\Nikki\source\repos\ADOThreeTier\ADOThreeTier\obj\Debug\ADOThreeTier.csproj.CopyComplete
+C:\Users\Nikki\source\repos\ADOThreeTier\ADOThreeTier\obj\Debug\ADOThreeTier.exe
+C:\Users\Nikki\source\repos\ADOThreeTier\ADOThreeTier\obj\Debug\ADOThreeTier.pdb
+C:\Users\Nikki\source\repos\ADOThreeTier\ADOThreeTier\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\Nikki\source\repos\ADOThreeTier\ADOThreeTier\bin\Debug\System.Security.AccessControl.dll
+C:\Users\Nikki\source\repos\ADOThreeTier\ADOThreeTier\bin\Debug\System.Security.Permissions.dll
+C:\Users\Nikki\source\repos\ADOThreeTier\ADOThreeTier\bin\Debug\System.Security.Principal.Windows.dll
+C:\Users\Nikki\source\repos\ADOThreeTier\ADOThreeTier\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\Nikki\source\repos\ADOThreeTier\ADOThreeTier\bin\Debug\System.Security.AccessControl.xml
+C:\Users\Nikki\source\repos\ADOThreeTier\ADOThreeTier\bin\Debug\System.Security.Permissions.xml
+C:\Users\Nikki\source\repos\ADOThreeTier\ADOThreeTier\bin\Debug\System.Security.Principal.Windows.xml

@@ -1,0 +1,29 @@
+﻿@model WebApplication3.Models.Customer
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@*HtmlHelpers*@
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>Customer Id</td>
+            <td>@Html.TextBoxFor(m => m.Id)</td>
+        </tr>
+        <tr>
+            <td>Customer Name</td>
+            <td>@Html.TextBoxFor(m => m.Name)</td>
+        </tr>
+        <tr>
+            <td>Customer Age</td>
+            <td>@Html.TextBoxFor(m => m.Age)</td>
+        </tr>
+        <tr>
+            <td>Custtomer PhoneNo</td>
+            <td>@Html.TextBoxFor(m=>m.PhoneNo)</td>
+        </tr>
+    </table>
+    <input type="submit" value="Add Customer" />
+}

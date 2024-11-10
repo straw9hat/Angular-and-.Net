@@ -1,0 +1,18 @@
+﻿@model IEnumerable<WebApplication4.Models.Order>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<h2>Details</h2>
+
+<div>
+    <span>Order number</span>@Model.OrderID
+    <br />
+    <span>Date of order</span>@Model.OrderDate
+    <hr />
+    <span>Customer Name</span>@Model.Customer.ContactName
+    <br />
+    <span>Customer Phone</span>@Model.Customer.Phone
+</div>

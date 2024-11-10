@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "ViewDatavsViewBag";
+}
+
+<h2>ViewDatavsViewBag</h2>
+
+<h3>View Bag List</h3>
+
+@for (int i=0;i<ViewBag.users.Count;i++)
+{
+    @ViewBag.users[i];
+    <br/>
+}
+<br/>
+
+<h3>View Data List</h3>
+
+@for (int i=0; i<((List<string>)ViewData["users"]).Count;i++)
+{
+    @(((List<string>)ViewData["users"])[i]);
+    <br/>
+}
+<br/>
+Check this out -> @ViewData["Nothing"]
+<br/>
+Check this out -> @ViewBag.Nothing

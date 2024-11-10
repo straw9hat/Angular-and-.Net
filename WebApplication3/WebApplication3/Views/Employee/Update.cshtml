@@ -1,0 +1,22 @@
+﻿@model WebApplication3.Models.Employee
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+@using (Html.BeginForm())
+{
+<table>
+    <tr>
+        <td>Employee Name</td>
+        <td>@Html.TextAreaFor(m => m.Name)</td>
+    </tr>
+    <tr>
+        <td>Employee Age</td>
+        <td>@Html.TextAreaFor(m => m.Age)</td>
+    </tr>
+</table>
+<input type="submit" value="Update" />
+}
+

@@ -1,0 +1,28 @@
+﻿@model UnderstandingEFProject.Models.Order
+
+@{
+    ViewBag.Title = "SingleOrder";
+}
+
+<h2>SingleOrder</h2>
+@*Order Id: @Model.Id
+<hr />
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    @foreach (var item in Model.Products)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+        </tr>
+    }
+    <tr>
+        <td colspan="2">Sum</td>
+        <td>@ViewBag.Total</td>
+    </tr>
+</table>*@

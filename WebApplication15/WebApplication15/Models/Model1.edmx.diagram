@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="44b89ffa36eb4aaca825dd7cdb069c4f" Name="Diagram1">
+        <EntityTypeShape EntityType="PrjGladModel.Applicant_details" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrjGladModel.Application_Status" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrjGladModel.Employment_details" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrjGladModel.identity_details" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrjGladModel.Loan_details" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrjGladModel.Loan_schemes" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrjGladModel.UserLogin_details" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrjGladModel.Vehicle_details" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="PrjGladModel.FK__Applicant__Car_I__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="PrjGladModel.FK__Applicant__email__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="PrjGladModel.FK__Applicati__Appli__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="PrjGladModel.FK__Loan_deta__Appli__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="PrjGladModel.FK__Employmen__email__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="PrjGladModel.FK__identity___email__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="PrjGladModel.FK__Loan_deta__Car_I__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="PrjGladModel.FK__Loan_deta__Loan___4D94879B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

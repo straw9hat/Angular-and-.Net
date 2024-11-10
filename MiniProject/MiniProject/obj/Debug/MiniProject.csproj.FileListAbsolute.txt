@@ -1,0 +1,6 @@
+C:\Users\Nikki\source\repos\MiniProject\MiniProject\bin\Debug\MiniProject.exe.config
+C:\Users\Nikki\source\repos\MiniProject\MiniProject\bin\Debug\MiniProject.exe
+C:\Users\Nikki\source\repos\MiniProject\MiniProject\bin\Debug\MiniProject.pdb
+C:\Users\Nikki\source\repos\MiniProject\MiniProject\obj\Debug\MiniProject.csprojAssemblyReference.cache
+C:\Users\Nikki\source\repos\MiniProject\MiniProject\obj\Debug\MiniProject.exe
+C:\Users\Nikki\source\repos\MiniProject\MiniProject\obj\Debug\MiniProject.pdb

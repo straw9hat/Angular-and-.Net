@@ -1,0 +1,14 @@
+C:\Users\Nikki\source\repos\ConsoleApp9\ConsoleApp9\bin\Debug\net6.0\ConsoleApp9.exe
+C:\Users\Nikki\source\repos\ConsoleApp9\ConsoleApp9\bin\Debug\net6.0\ConsoleApp9.deps.json
+C:\Users\Nikki\source\repos\ConsoleApp9\ConsoleApp9\bin\Debug\net6.0\ConsoleApp9.runtimeconfig.json
+C:\Users\Nikki\source\repos\ConsoleApp9\ConsoleApp9\bin\Debug\net6.0\ConsoleApp9.dll
+C:\Users\Nikki\source\repos\ConsoleApp9\ConsoleApp9\bin\Debug\net6.0\ConsoleApp9.pdb
+C:\Users\Nikki\source\repos\ConsoleApp9\ConsoleApp9\obj\Debug\net6.0\ConsoleApp9.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nikki\source\repos\ConsoleApp9\ConsoleApp9\obj\Debug\net6.0\ConsoleApp9.AssemblyInfoInputs.cache
+C:\Users\Nikki\source\repos\ConsoleApp9\ConsoleApp9\obj\Debug\net6.0\ConsoleApp9.AssemblyInfo.cs
+C:\Users\Nikki\source\repos\ConsoleApp9\ConsoleApp9\obj\Debug\net6.0\ConsoleApp9.csproj.CoreCompileInputs.cache
+C:\Users\Nikki\source\repos\ConsoleApp9\ConsoleApp9\obj\Debug\net6.0\ConsoleApp9.dll
+C:\Users\Nikki\source\repos\ConsoleApp9\ConsoleApp9\obj\Debug\net6.0\refint\ConsoleApp9.dll
+C:\Users\Nikki\source\repos\ConsoleApp9\ConsoleApp9\obj\Debug\net6.0\ConsoleApp9.pdb
+C:\Users\Nikki\source\repos\ConsoleApp9\ConsoleApp9\obj\Debug\net6.0\ConsoleApp9.genruntimeconfig.cache
+C:\Users\Nikki\source\repos\ConsoleApp9\ConsoleApp9\obj\Debug\net6.0\ref\ConsoleApp9.dll
